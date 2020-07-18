@@ -1,7 +1,3 @@
 package me.tkurzydym.model.player
 
-import me.tkurzydym.model.game.GameAction
-
-interface Player {
-    fun pickAction() : GameAction
-}
+data class Player(val capabilities: PlayerCapabilities, var amountWins: Int = 0)
