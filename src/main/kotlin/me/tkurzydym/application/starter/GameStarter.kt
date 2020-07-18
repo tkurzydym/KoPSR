@@ -1,4 +1,4 @@
-package me.tkurzydym.application
+package me.tkurzydym.application.starter
 
 import me.tkurzydym.application.game.KoPSR
 import me.tkurzydym.model.player.Player
