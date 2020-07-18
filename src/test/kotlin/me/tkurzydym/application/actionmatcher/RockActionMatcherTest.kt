@@ -7,14 +7,14 @@ import me.tkurzydym.model.game.MatchResult
 
 internal class RockActionMatcherTest : StringSpec({
     "should draw against Rock" {
-        RockActionMatcher.match(GameAction.ROCK) shouldBe MatchResult.DRAW
+        RockActionMatcher().match(GameAction.ROCK) shouldBe MatchResult.DRAW
     }
 
     "should lose against Paper" {
-        RockActionMatcher.match(GameAction.PAPER) shouldBe MatchResult.LOSE
+        RockActionMatcher().match(GameAction.PAPER) shouldBe MatchResult.LOSE
     }
 
     "should win against Scissor" {
-        RockActionMatcher.match(GameAction.SCISSOR) shouldBe MatchResult.WIN
+        RockActionMatcher().match(GameAction.SCISSOR) shouldBe MatchResult.WIN
     }
 })

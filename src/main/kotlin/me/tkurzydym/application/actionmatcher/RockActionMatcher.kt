@@ -3,7 +3,7 @@ package me.tkurzydym.application.actionmatcher
 import me.tkurzydym.model.game.GameAction
 import me.tkurzydym.model.game.MatchResult
 
-object RockActionMatcher : ActionMatcher {
+class RockActionMatcher : ActionMatcher {
 
     private val MATCHINGS = mapOf(
         GameAction.PAPER to MatchResult.LOSE,

@@ -3,7 +3,7 @@ package me.tkurzydym.application.actionmatcher
 import me.tkurzydym.model.game.GameAction
 import me.tkurzydym.model.game.MatchResult
 
-object PaperActionMatcher : ActionMatcher {
+class PaperActionMatcher : ActionMatcher {
 
     private val MATCHINGS: Map<GameAction, MatchResult> = mapOf(
         GameAction.PAPER to MatchResult.DRAW,
