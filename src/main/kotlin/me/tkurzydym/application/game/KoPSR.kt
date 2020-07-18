@@ -27,9 +27,18 @@ class KoPSR {
     private fun playRound(p1: Player, p2: Player) {
         when(p1.capabilities.pickAction().matchAgainst(p2.capabilities.pickAction()))
         {
-            MatchResult.WIN -> p1.apply { amountWins++ }
-            MatchResult.DRAW -> p1.apply { amountDraws++ }
-            MatchResult.LOSE -> p1.apply { amountLosses++ }
+            MatchResult.WIN -> {
+                p1.apply { amountWins++ }
+                p2.apply { amountLosses++ }
+            }
+            MatchResult.DRAW -> {
+                p1.apply { amountDraws++ }
+                p2.apply { amountDraws++ }
+            }
+            MatchResult.LOSE -> {
+                p1.apply { amountLosses++ }
+                p2.apply { amountWins++ }
+            }
         }
 
     }

@@ -54,4 +54,23 @@ class KoPSRTest : StringSpec({
         val p1 = Player(RandomPlayer(), name = "RandomPlayer")
         kopsr.playGame(10, p1, rockthrower) shouldBe GameResult(rounds= 10, players=listOf(p1, rockthrower))
     }
+
+    "should count player 2 losses" {
+        every { randPlayerCapabilities.pickAction() } returns GameAction.PAPER
+        kopsr.playGame(1, randPlayer, rockthrower)
+        rockthrower.amountLosses shouldBe 1
+    }
+
+    "should count player 2 draws" {
+        every { randPlayerCapabilities.pickAction() } returns GameAction.ROCK
+        kopsr.playGame(1, randPlayer, rockthrower)
+        rockthrower.amountDraws shouldBe 1
+    }
+
+    "should count player 2 wins" {
+        every { randPlayerCapabilities.pickAction() } returns GameAction.SCISSOR
+        kopsr.playGame(1, randPlayer, rockthrower)
+        rockthrower.amountWins shouldBe 1
+    }
+
 })
