@@ -20,6 +20,7 @@ object GameLog {
                 """
                     Game Results for ${it.name}:
                         ${it.name} won ${it.amountWins} times
+                        The round ended ${it.amountDraws} times in a draw
                         Sadly ${it.name} also lost ${it.amountLosses} times
                 
                 """.trimIndent()
