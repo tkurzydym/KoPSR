@@ -2,8 +2,16 @@ package me.tkurzydym.model.game
 
 import kotlin.random.Random
 
-enum class GameAction {
-    ROCK,
+enum class GameAction{
+    PAPER,
     SCISSOR,
-    PAPER;
+    ROCK;
+}
+
+fun GameAction.matchAgainstRock() : GameResult {
+    return when(this){
+        GameAction.PAPER -> GameResult.WIN
+        GameAction.SCISSOR -> GameResult.LOSE
+        GameAction.ROCK -> GameResult.DRAW
+    }
 }
