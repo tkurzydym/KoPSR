@@ -1,6 +1,6 @@
 package me.tkurzydym.model.game
 
-import kotlin.random.Random
+import me.tkurzydym.application.actionmatcher.*
 
 enum class GameAction{
     PAPER,
@@ -8,10 +8,6 @@ enum class GameAction{
     ROCK;
 }
 
-fun GameAction.matchAgainstRock() : GameResult {
-    return when(this){
-        GameAction.PAPER -> GameResult.WIN
-        GameAction.SCISSOR -> GameResult.LOSE
-        GameAction.ROCK -> GameResult.DRAW
-    }
+fun GameAction.matchAgainst(other: GameAction) : GameResult {
+    return ActionMatcherFactory.build(this).match(other)
 }

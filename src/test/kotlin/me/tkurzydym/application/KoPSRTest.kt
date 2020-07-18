@@ -28,28 +28,28 @@ class KoPSRTest : StringSpec({
     beforeTest(setup)
 
     "should play at least 100 rounds" {
-        kopsr.playGame(100, randPlayer) shouldBe 100
+        kopsr.playGame(100, randPlayer, rockthrower) shouldBe 100
     }
 
     "should let two random player compete against each other" {
-        kopsr.playGame(1, randPlayer)
+        kopsr.playGame(1, randPlayer, rockthrower)
         randPlayer.amountWins shouldBe 1
     }
 
     "should also end a round in a draw" {
         every { randPlayerCapabilities.pickAction() } returns GameAction.ROCK
-        kopsr.playGame(1, randPlayer)
+        kopsr.playGame(1, randPlayer, rockthrower)
         randPlayer.amountDraws shouldBe 1
     }
 
     "should also end a round in a loss" {
         every { randPlayerCapabilities.pickAction() } returns GameAction.SCISSOR
-        kopsr.playGame(1, randPlayer)
+        kopsr.playGame(1, randPlayer, rockthrower)
         randPlayer.amountLosses shouldBe 1
     }
 
     "should print out Results" {
         val trueRandomPlayer = Player(RandomPlayer())
-        kopsr.playGame(50, trueRandomPlayer)
+        kopsr.playGame(50, trueRandomPlayer, rockthrower)
     }
 })

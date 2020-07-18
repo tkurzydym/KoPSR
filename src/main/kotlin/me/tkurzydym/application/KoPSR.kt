@@ -1,17 +1,17 @@
 package me.tkurzydym.application
 
 import me.tkurzydym.model.game.GameResult
-import me.tkurzydym.model.game.matchAgainstRock
+import me.tkurzydym.model.game.matchAgainst
 import me.tkurzydym.model.player.Player
 
 class KoPSR {
 
-    fun playGame(rounds: Int, p1: Player): Int
+    fun playGame(rounds: Int, p1: Player, p2: Player): Int
     {
         var round = 0
         while(round < rounds)
         {
-            playRoundAgainstRock(p1)
+            playRound(p1, p2)
             round++
         }
 
@@ -19,8 +19,8 @@ class KoPSR {
         return round
     }
 
-    private fun playRoundAgainstRock(p1: Player) {
-        when(p1.capabilities.pickAction().matchAgainstRock())
+    private fun playRound(p1: Player, p2: Player) {
+        when(p1.capabilities.pickAction().matchAgainst(p2.capabilities.pickAction()))
         {
             GameResult.WIN -> p1.apply { amountWins++ }
             GameResult.DRAW -> p1.apply { amountDraws++ }
