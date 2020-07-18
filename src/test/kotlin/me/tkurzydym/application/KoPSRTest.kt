@@ -9,7 +9,6 @@ import me.tkurzydym.model.game.GameAction
 import me.tkurzydym.model.player.Player
 import me.tkurzydym.model.player.RandomPlayer
 import me.tkurzydym.model.player.RockThrower
-import kotlin.random.Random
 
 class KoPSRTest : StringSpec({
 
@@ -43,4 +42,14 @@ class KoPSRTest : StringSpec({
         randPlayer.amountDraws shouldBe 1
     }
 
+    "should also end a round in a loss" {
+        every { randPlayerCapabilities.pickAction() } returns GameAction.SCISSOR
+        kopsr.playGame(1, randPlayer)
+        randPlayer.amountLosses shouldBe 1
+    }
+
+    "should print out Results" {
+        val trueRandomPlayer = Player(RandomPlayer())
+        kopsr.playGame(50, trueRandomPlayer)
+    }
 })
