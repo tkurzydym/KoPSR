@@ -6,21 +6,25 @@ object GameLog {
 
     fun printGameResult(result: GameResult) {
 
-        println("""
-            Amount of Games played: ${result.rounds}
+        println(
+            """
+                Amount of Games played: ${result.rounds}
+                The winner of the Game is: ${result.players.maxBy { it.amountWins }!!.name}
+                This game was held between ${result.players.joinToString(separator = " and ") { it.name }}
             
-            The winner of the Game is: ${result.players.maxBy { it.amountWins }!!.name }
-            
-            This game was held between ${result.players.joinToString(separator = " and ")}
-            
-            ${result.players.forEach {
+            """.trimIndent()
+        )
+
+        result.players.forEach {
+            println(
                 """
                     Game Results for ${it.name}:
-                        ${it.name} won ${ it.amountWins } times
-                        Sadly ${it.name} also lost ${ it.amountLosses } times
-                """
-            }}
-        """.trimIndent())
+                        ${it.name} won ${it.amountWins} times
+                        Sadly ${it.name} also lost ${it.amountLosses} times
+                
+                """.trimIndent()
+            )
+        }
     }
 
 }
