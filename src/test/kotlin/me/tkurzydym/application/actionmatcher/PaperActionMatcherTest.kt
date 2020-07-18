@@ -3,18 +3,18 @@ package me.tkurzydym.application.actionmatcher
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import me.tkurzydym.model.game.GameAction
-import me.tkurzydym.model.game.GameResult
+import me.tkurzydym.model.game.MatchResult
 
 internal class PaperActionMatcherTest : StringSpec({
     "should win against Rock" {
-        PaperActionMatcher.match(GameAction.ROCK) shouldBe GameResult.WIN
+        PaperActionMatcher.match(GameAction.ROCK) shouldBe MatchResult.WIN
     }
 
     "should draw against Paper" {
-        PaperActionMatcher.match(GameAction.PAPER) shouldBe GameResult.DRAW
+        PaperActionMatcher.match(GameAction.PAPER) shouldBe MatchResult.DRAW
     }
 
     "should lose against Scissor" {
-        PaperActionMatcher.match(GameAction.SCISSOR) shouldBe GameResult.LOSE
+        PaperActionMatcher.match(GameAction.SCISSOR) shouldBe MatchResult.LOSE
     }
 })

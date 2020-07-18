@@ -1,11 +1,13 @@
-package me.tkurzydym.application
+package me.tkurzydym.application.game
 
 import io.kotest.core.spec.BeforeTest
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
+import me.tkurzydym.application.game.KoPSR
 import me.tkurzydym.model.game.GameAction
+import me.tkurzydym.model.game.GameResult
 import me.tkurzydym.model.player.Player
 import me.tkurzydym.model.player.RandomPlayer
 import me.tkurzydym.model.player.RockThrower
@@ -21,14 +23,14 @@ class KoPSRTest : StringSpec({
     lateinit var rockthrower: Player
 
     val setup: BeforeTest = {
-        randPlayer = Player(randPlayerCapabilities)
-        rockthrower = Player(RockThrower())
+        randPlayer = Player(randPlayerCapabilities, name = "RandomPlayer")
+        rockthrower = Player(RockThrower(), name ="Rockthrower")
     }
 
     beforeTest(setup)
 
     "should play at least 100 rounds" {
-        kopsr.playGame(100, randPlayer, rockthrower) shouldBe 100
+        kopsr.playGame(100, randPlayer, rockthrower).rounds shouldBe 100
     }
 
     "should let two random player compete against each other" {
@@ -48,8 +50,8 @@ class KoPSRTest : StringSpec({
         randPlayer.amountLosses shouldBe 1
     }
 
-    "should print out Results" {
-        val trueRandomPlayer = Player(RandomPlayer())
-        kopsr.playGame(50, trueRandomPlayer, rockthrower)
+    "should return Result" {
+        val p1 = Player(RandomPlayer(), name = "RandomPlayer")
+        kopsr.playGame(10, p1, rockthrower) shouldBe GameResult(rounds= 10, players=listOf(p1, rockthrower))
     }
 })

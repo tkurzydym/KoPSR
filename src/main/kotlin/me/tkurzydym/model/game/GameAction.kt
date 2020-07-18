@@ -8,6 +8,6 @@ enum class GameAction{
     ROCK;
 }
 
-fun GameAction.matchAgainst(other: GameAction) : GameResult {
+fun GameAction.matchAgainst(other: GameAction) : MatchResult {
     return ActionMatcherFactory.build(this).match(other)
 }

@@ -1,5 +1,5 @@
 package me.tkurzydym.model.game
 
-enum class GameResult {
-    WIN, DRAW, LOSE
-}
+import me.tkurzydym.model.player.Player
+
+data class GameResult(val rounds: Int, val players: List<Player>)

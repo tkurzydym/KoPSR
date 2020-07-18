@@ -1,17 +1,17 @@
 package me.tkurzydym.application.actionmatcher
 
 import me.tkurzydym.model.game.GameAction
-import me.tkurzydym.model.game.GameResult
+import me.tkurzydym.model.game.MatchResult
 
 object PaperActionMatcher : ActionMatcher {
 
-    private val MATCHINGS: Map<GameAction, GameResult> = mapOf(
-        GameAction.PAPER to GameResult.DRAW,
-        GameAction.ROCK to GameResult.WIN,
-        GameAction.SCISSOR to GameResult.LOSE
+    private val MATCHINGS: Map<GameAction, MatchResult> = mapOf(
+        GameAction.PAPER to MatchResult.DRAW,
+        GameAction.ROCK to MatchResult.WIN,
+        GameAction.SCISSOR to MatchResult.LOSE
     )
 
-    override fun match(other: GameAction): GameResult {
+    override fun match(other: GameAction): MatchResult {
         return MATCHINGS.getValue(other)
     }
 }
