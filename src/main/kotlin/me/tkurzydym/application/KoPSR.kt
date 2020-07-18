@@ -22,7 +22,7 @@ class KoPSR {
         when(p1.capabilities.pickAction().matchAgainstRock())
         {
             GameResult.WIN -> p1.apply { amountWins++ }
-            GameResult.DRAW -> TODO()
+            GameResult.DRAW -> p1.apply { amountDraws++ }
             GameResult.LOSE -> TODO()
         }
 

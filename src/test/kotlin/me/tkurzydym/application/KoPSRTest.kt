@@ -32,8 +32,15 @@ class KoPSRTest : StringSpec({
         kopsr.playGame(100, randPlayer) shouldBe 100
     }
 
-    "should let a random player compete against rock" {
+    "should let two random player compete against each other" {
         kopsr.playGame(1, randPlayer)
         randPlayer.amountWins shouldBe 1
     }
+
+    "should also end a round in a draw" {
+        every { randPlayerCapabilities.pickAction() } returns GameAction.ROCK
+        kopsr.playGame(1, randPlayer)
+        randPlayer.amountDraws shouldBe 1
+    }
+
 })
